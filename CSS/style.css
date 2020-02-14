@@ -1,0 +1,94 @@
+.tableTop {
+	margin: auto;
+}
+h6 {
+	text-align: center;
+}
+
+td {
+	font-family: "Comic Sans MS", "cursive", "sans-serif";
+	text-align: center;
+	font-weight: bold;
+}
+body th {
+	font-family: "Comic Sans MS", "cursive", "sans-serif";
+}
+#grade {
+	text-align: justify;
+	width: 0;
+	height: 0;
+	border-left: 300px solid transparent;
+	border-right: 300px solid transparent;
+	border-bottom: 100px solid #8513F0;
+	font-family: "Comic Sans MS", "cursive", "sans-serif";
+	margin: auto;
+}
+td {
+	padding-bottom: 10px;
+	padding-right: 10px;
+}
+.field {
+	margin: auto;
+	border-radius: 25px;
+	background: #33CCCC;
+	border: 10px #8513F0 solid;
+	width:450px;
+}
+body {
+	background-color:#6699FF;
+}
+
+#demo {
+	margin: auto;
+}
+h1 {
+	text-align: center;
+	font-family: "Comic Sans MS", "cursive", "sans-serif";
+
+}
+
+footer {
+	text-align: center;
+}
+input {
+	padding: 8px;
+	border: 2px solid #ccc;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	font-family: "Comic Sans MS", "cursive", "sans-serif";
+}
+
+input:focus {
+	border-color: #333;
+}
+
+button {
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	font-family: "Comic Sans MS", "cursive", "sans-serif";
+	padding: 30px 20px;
+	border: red;
+	border-radius: 50%;
+	background-color: white;
+	cursor: pointer;
+	position:absolute;
+	left: 46.3%;
+	top: 30px;
+}
+
+button:hover {
+    background-color: black; /* Green */
+    color: white;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+input[type="reset"] {
+	padding-left: 20px;
+	padding-right: 20px;
+	width:100%;
+}

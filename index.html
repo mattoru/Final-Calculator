@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Grade Calculator</title>
+	<meta name ="Matthew's Grade Calculator" content ="Calculator">
+	<link rel="stylesheet" type="text/css" href="CSS/style.css">
+</head>
+<body>
+	<h1 id = "grade"></h1>
+	<form id = "cool">
+		<fieldset class = "field">
+<table class = "tableTop">
+	<h1>Grade Calculator</h1>
+	<h6><em>Enter a Single Value or Comma Seperated List</em></h6>
+		<thead>
+		<tr>
+			<th>Categories</th>
+			<th>Obtained Scores</th>
+			<th>Weight %</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				Tests
+			</td>
+			<td>
+				<input type = "text" name = "tests" placeholder="Tests(Before Final)">
+			</td>
+			<td>
+				<input type = "number" name = "testsW" placeholder = "Weight">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Homework
+			</td>
+			<td>
+				<input type = "text" name = "homework" placeholder="Homework">
+			</td>
+			<td>
+				<input type = "number" name = "homeworkW" placeholder = "Weight">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Quiz
+			</td>
+			<td>
+				<input type = "text" name = "quiz" placeholder="Quiz">
+			</td>
+			<td>
+				<input type = "number" name = "quizW" placeholder = "Weight">
+			</td>
+		</tr>
+		<td>
+			Participation
+		</td>
+			<td>
+				<input type = "text" name = "participation" placeholder="Class Participation">
+			</td>
+			<td>
+				<input type = "number" name = "participationW" placeholder = "Weight">
+			</td>
+		<tr>
+			<td>
+				Final
+			</td>
+			<td></td>
+			<td>
+				<input type = "number" name = "finalW" placeholder = "Weight">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Extra Credit
+			</td>
+			<td>
+				<input type = "text" name = "extra" placeholder="Extra Credit">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Desired Score
+			</td>
+			<td>
+			<input type = "number" name = "wanted" placeholder="Desired Score">
+		</td>
+		</tr>
+	</tbody>
+
+</table><br>
+		</fieldset>
+	</form><br>
+
+	<button id = "hi" onclick = "gradeCalc()">Calculate</button>
+		<h1 id = "demo"></h1>
+
+	<script type="text/javascript">
+		function gradeCalc(){
+			var tests = document.getElementsByName("tests")[0].value;
+			var tweight = document.getElementsByName("testsW")[0].value;
+			var homework = document.getElementsByName("homework")[0].value;
+			var hweight = document.getElementsByName("homeworkW")[0].value;
+			var quiz = document.getElementsByName("quiz")[0].value;
+			var qweight = document.getElementsByName("quizW")[0].value;
+			var participation = document.getElementsByName("participation")[0].value;
+			var pweight = document.getElementsByName("participationW")[0].value;
+			var want = document.getElementsByName("wanted")[0].value;
+			var fweight = document.getElementsByName("finalW")[0].value;
+			var extra = document.getElementsByName("extra")[0].value;
+
+
+			if (tests.indexOf(",") >= 0) {
+				tests = seperator(tests);
+			}
+			if (homework.indexOf(",") >= 0) {
+				homework = seperator(homework);
+			}
+			if (quiz.indexOf(",") >= 0) {
+				quiz = seperator(quiz);
+			}
+			if (participation.indexOf(",") >= 0) {
+				participation = seperator(participation);
+			}
+			if (want.indexOf(",") >= 0) {
+				want = seperator(want);
+			}
+			if (extra.indexOf(",") >= 0) {
+				extra = seperator(extra);
+			}
+
+			want = parseFloat(want);
+			homework = parseFloat(homework);
+			participation = parseFloat(participation);
+			quiz = parseFloat(quiz);
+			tests = parseFloat(tests);
+			extra = parseFloat(extra);
+
+
+			tweight = parseFloat(tweight);
+			hweight = parseFloat(hweight);
+			qweight = parseFloat(qweight);
+			pweight = parseFloat(pweight);
+			fwieght = parseFloat(fweight);
+
+
+
+			tests = tests * (tweight/100.0);
+			homework = homework * (hweight/100.0);
+			quiz = quiz * (qweight/100.0);
+			participation = participation * (pweight/100.0);
+			fweigh = fweight/100.0;
+
+
+			var points = parseFloat(want) - parseFloat(homework) - parseFloat(participation) - parseFloat(quiz) - parseFloat(tests) - parseFloat(extra);
+
+			var finalscore = parseFloat(points)/parseFloat(fweigh);
+
+			var check = parseFloat(tweight) + parseFloat(hweight) + parseFloat(qweight) + parseFloat(pweight) + parseFloat(fweight);
+
+			if (check != 100) {
+			 	finalscore = "Your total weight does not equal 100%";
+			 	} else if (isNaN(want) || isNaN(finalscore)) {
+			 		finalscore = "Please fill in all necessary scores.";
+			 	} else {
+			 		finalscore = "To get a " + want + "% in the course you will need a " + finalscore + "% on the final.";
+			 	}
+
+			 	if (isNaN(check)) {
+			 	finalscore = "Please fill in all necessary weight percentages.";
+			 	}
+
+			document.getElementById("demo").innerHTML = finalscore;
+		}
+
+		function seperator(x) {
+			var num = parseInt(0);
+			var com;
+			var val;
+			var spc = parseInt(0);
+			var jump;
+			var total = parseInt(0);
+
+			for (i = 0; i < x.length; i++) {
+				com = x.charAt(i);
+				if (com.indexOf(",") >= 0) {
+					num = parseInt(num) + 1;
+					val = parseInt(i);
+					jump = x.substring(spc,val);
+					jump = parseInt(jump);
+					total = parseFloat(total) + parseFloat(jump);
+					spc = val + 1;
+				}
+			}
+			jump = x.substring(spc,x.length);
+			jump = parseInt(jump);
+			total = parseFloat(total) + parseFloat(jump);
+
+
+			jump = parseFloat(total)/(parseFloat(num) + 1);
+			return jump;
+		}
+	</script>
+</body>
+<footer>
+	<h6> &copy; 2014 - 2017 Matthew Orubina. All Rights Reserved</h6>
+</footer>
+</html>
